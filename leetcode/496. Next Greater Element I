@@ -1,0 +1,24 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        out = []
+        for i,x in enumerate(nums1):
+            matched = 0
+            for j,y in enumerate(nums2):
+                if x==y:
+                    matched = 1
+                if matched and y>x:
+                    out+=[y]
+                    break
+            if len(out)<i+1:
+                out+=[-1]
+        return out
+#         stolen:
+#         greater_dict = {}
+#         stack = []
+#         for num in nums2:
+#             while stack and num > stack[-1]:
+#                 greater_dict[stack.pop()] = num
+#             stack.append(num)
+
+#         return [greater_dict.get(num, -1) for num in nums1]
+                    
