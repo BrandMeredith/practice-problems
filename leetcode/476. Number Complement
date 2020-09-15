@@ -32,3 +32,21 @@ class Solution:
           num = num//2
           digit += 1
       return out
+
+"""
+## Stolen
+class Solution:
+    def findComplement(self, num: int) -> int:
+        # first create a number that's just a list of 1s in binary of the same length as num
+        # This is done by assuming that the first digit is a 1, then using that to make sure the next digit it 1, then using that to make sure that the third and 4th digits are 1, etc
+        # Note, this creates at max a 32 bit number made up of all 1s
+        bitmask = num
+        bitmask |= bitmask >> 1
+        bitmask |= bitmask >> 2
+        bitmask |= bitmask >> 4
+        bitmask |= bitmask >> 8
+        bitmask |= bitmask >> 16
+        
+        # next, do an exclusive or on num and the list of 1s (of the same length)
+        return bitmask ^ num
+"""
